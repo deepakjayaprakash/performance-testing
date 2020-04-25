@@ -31,4 +31,16 @@ public class PerfController {
         log.info("test_api_response: {}", responseDTO);
         return responseDTO;
     }
+
+    @GetMapping(value = "/testSync", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseDTO testSyncAPI() {
+        ResponseDTO responseDTO = null;
+        try {
+            responseDTO = perfService.getResponseInSyncForTest();
+        } catch (Exception e) {
+            log.error("exception_in_test_api", e);
+        }
+        log.info("test_api_response: {}", responseDTO);
+        return responseDTO;
+    }
 }
